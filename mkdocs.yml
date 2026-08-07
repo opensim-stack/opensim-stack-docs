@@ -1,0 +1,66 @@
+site_name: OpenSim AI Stack Docs
+site_description: Documentation suite for the OpenSim AI Docker stack and related components.
+site_url: https://opensim-stack.github.io/docs/
+repo_url: https://github.com/opensim-stack/opensim-ai-docker
+repo_name: opensim-stack/opensim-ai-docker
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: deep purple
+    accent: cyan
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+    - search.highlight
+    - search.suggest
+
+nav:
+  - Introduction: index.md
+  - Beginner Guide:
+      - Quick Start: beginner/quick-start.md
+      - Movement: beginner/movement.md
+      - Building: beginner/building.md
+      - AI Permissions and Questions: beginner/permissions-questions.md
+  - Advanced Guide:
+      - Quick Start and Modes: advanced/quick-start-and-modes.md
+      - Movement and Navigation: advanced/movement-navigation.md
+      - Building and Environment: advanced/building-environment.md
+      - Server Maintenance and User Management: advanced/server-maintenance-user-management.md
+      - AI Configuration: advanced/ai-configuration.md
+      - Hardening: advanced/hardening.md
+  - Reference:
+      - Architecture Diagram: reference/architecture.md
+      - Components: reference/components.md
+      - Curated Top Commands: reference/top-commands.md
+      - Glossary: reference/glossary.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/neon.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/mermaid.js
