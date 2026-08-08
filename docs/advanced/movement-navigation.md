@@ -2,7 +2,7 @@
 
 `opensim-metaverse2mcp` exposes movement tools over MCP HTTP. AI prompts in IM eventually map to these tools.
 
-## Core movement tool set
+## Core movement and avatar control tool set
 
 - `MoveBy`
 - `WalkTo`
@@ -20,7 +20,21 @@
 - `Stand`
 - `Fly`
 - `Jump`
-- `Dance`
+- `AnimationStart`
+- `AnimationStop`
+- `AnimationsList`
+- `ActiveAnimations`
+
+## Animation control
+
+Use `AnimationsList` to discover built-in animation names (e.g. `DANCE1`, `WAVE`, `CLAP`, `SIT`), then start/stop them by name or raw UUID:
+
+```text
+AnimationsList()
+AnimationStart(animation="DANCE1")
+ActiveAnimations()
+AnimationStop(animation="DANCE1")
+```
 
 ## Reliable navigation pattern
 

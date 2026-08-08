@@ -26,7 +26,7 @@ nav:
   - Introduction: index.md
   - Beginner Guide:
       - Quick Start: beginner/quick-start.md
-      - Movement: beginner/movement.md
+      - Movement and Animation: beginner/movement-animation.md
       - Building: beginner/building.md
       - AI Permissions and Questions: beginner/permissions-questions.md
   - Advanced Guide:
