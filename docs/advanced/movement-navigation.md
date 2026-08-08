@@ -10,6 +10,12 @@
 - `TeleportTo`
 - `TeleportToRegionHandle`
 - `StopMovement`
+- `StartMovement`
+- `LookAt`
+- `SetCameraHeading`
+- `GetCameraState`
+- `Follow`
+- `StopFollow`
 - `Sit`
 - `Stand`
 - `Fly`
