@@ -29,12 +29,14 @@ nav:
       - Movement and Animation: beginner/movement-animation.md
       - Building: beginner/building.md
       - Land Basics: beginner/land.md
+      - Social and Groups: beginner/social.md
       - AI Permissions and Questions: beginner/permissions-questions.md
   - Advanced Guide:
       - Quick Start and Modes: advanced/quick-start-and-modes.md
       - Movement and Navigation: advanced/movement-navigation.md
       - Building and Environment: advanced/building-environment.md
       - Land Management: advanced/land.md
+      - Social, Groups, and Session Control: advanced/social.md
       - Server Maintenance and User Management: advanced/server-maintenance-user-management.md
       - AI Configuration: advanced/ai-configuration.md
       - Hardening: advanced/hardening.md
