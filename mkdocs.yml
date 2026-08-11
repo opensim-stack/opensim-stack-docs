@@ -28,6 +28,7 @@ nav:
       - Quick Start: beginner/quick-start.md
       - Movement and Animation: beginner/movement-animation.md
       - Building: beginner/building.md
+      - Content (Mesh Upload): beginner/content.md
       - Land Basics: beginner/land.md
       - Social and Groups: beginner/social.md
       - AI Permissions and Questions: beginner/permissions-questions.md
@@ -35,6 +36,7 @@ nav:
       - Quick Start and Modes: advanced/quick-start-and-modes.md
       - Movement and Navigation: advanced/movement-navigation.md
       - Building and Environment: advanced/building-environment.md
+      - Content (Mesh Upload): advanced/content.md
       - Land Management: advanced/land.md
       - Social, Groups, and Session Control: advanced/social.md
       - Server Maintenance and User Management: advanced/server-maintenance-user-management.md

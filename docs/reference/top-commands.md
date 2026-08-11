@@ -67,6 +67,15 @@ terrain save /workspace/exports/terrain.r32
 set water height 25
 ```
 
+## Mesh content prompts (GLTF/GLB)
+
+```text
+Inspect /workspace/models/sign.glb with strict mode enabled and return all diagnostics.
+Inspect /workspace/models/house.glb with strict mode disabled and summarize top warnings.
+Upload /workspace/models/sign.glb as Town Sign with description Main plaza sign.
+Inspect /workspace/models/bridge.glb in strict mode, then upload as Bridge-A if inspection passes.
+```
+
 ## Docker operational commands
 
 ```bash

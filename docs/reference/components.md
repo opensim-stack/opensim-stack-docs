@@ -29,6 +29,13 @@ Primary files:
 - Exposes movement/building/inventory/environment tools over MCP HTTP.
 - Handles IM-driven star commands for sessions, provider auth, and runtime configuration.
 
+## `opensim-blender`
+
+- MCP bridge for Blender authoring workflows in the same stack.
+- Typical in-stack endpoint: `http://opensim-blender:8996/mcp`.
+- Uses the `blender-mcp` project to expose Blender operations to MCP-compatible agents.
+- Upstream project: <https://github.com/ahujasid/blender-mcp>
+
 ## `opensim-opencode-init` and `opensim-opencode`
 
 - Init service writes stack `opencode.json` with MCP wiring.
@@ -53,4 +60,6 @@ Common persistent volumes include:
 - `opensim-console2mcp`: <https://github.com/opensim-stack/opensim-console2mcp>
 - `opensim-metaverse2mcp`: <https://github.com/opensim-stack/opensim-metaverse2mcp>
 - `opensim-opencode`: <https://github.com/opensim-stack/opensim-opencode>
+- `opensim-blender`: <https://github.com/opensim-stack/opensim-blender>
+- `blender-mcp`: <https://github.com/ahujasid/blender-mcp>
 - `libremetaverse`: <https://github.com/opensim-stack/libremetaverse>
