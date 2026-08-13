@@ -79,3 +79,5 @@ docker compose restart opensim-metaverse2mcp
 
 !!! tip "Handler-gated control"
     If handler restrictions are enabled, only the configured handler avatar can issue bot control commands.
+
+For tool-level outfit, wearable, and attachment operations, see **Advanced Guide -> Appearance and Wearables**.

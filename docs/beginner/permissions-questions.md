@@ -7,7 +7,9 @@ The bot may ask permission before doing sensitive actions (file edits, command e
 1. In IM chat (default and always available).
 2. In optional in-world popup dialogs via the LSL dialog bridge.
 
-The dialog bridge is a small script object (`dialog-bridge.lsl`) that can show multiple-choice prompts using `llDialog`.
+The dialog bridge is delivered via the bot attachment `The Cube Bot` (from inventory folder `Cube Bot IAR`) and can show multiple-choice prompts using `llDialog`.
+
+If needed, run `*bridge install` to wear `Full Body Alpha` and attach `The Cube Bot` to `Spine`.
 
 ## Essential star commands
 

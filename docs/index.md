@@ -23,7 +23,7 @@ The OpenSim AI Stack is a Docker Compose deployment that combines:
 2. In-world bot avatar you can chat with by IM.
 3. Bot movement tools: walk, fly, teleport, and stop actions.
 4. Prim building tools: create, scale, rotate, texture, link, and inspect.
-5. Inventory and asset workflows (upload, download, give, and policy control).
+5. Inventory, outfit, and wearable workflows (upload, download, give, attach, and policy control).
 6. Environment controls for region and parcel lighting/weather profiles.
 7. Runtime AI provider and model switching using star commands.
 8. Prompt layering with project and in-world `AGENTS.md` support.
@@ -34,6 +34,7 @@ The OpenSim AI Stack is a Docker Compose deployment that combines:
 
 - If you are new to Docker and OpenSim, start with **Beginner Guide -> Quick Start**.
 - If you are already comfortable with containers and operations, start with **Advanced Guide -> Quick Start and Modes**.
+- For avatar styling and outfit control, go to **Beginner Guide -> Appearance and Wearables** or **Advanced Guide -> Appearance and Wearables**.
 
 ## Docker learning resources
 
@@ -65,4 +66,6 @@ Runs Opencode server mode and uses generated `opencode.json` to connect to both 
 
 - Architecture details: **Reference -> Architecture Diagram**
 - First run: **Beginner Guide -> Quick Start**
+- Avatar outfit and wearable control: **Beginner Guide -> Appearance and Wearables**
+- Tool-level outfit/attachment operations: **Advanced Guide -> Appearance and Wearables**
 - Security defaults and hardening: **Advanced Guide -> Hardening**

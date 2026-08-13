@@ -27,6 +27,7 @@ nav:
   - Beginner Guide:
       - Quick Start: beginner/quick-start.md
       - Movement and Animation: beginner/movement-animation.md
+      - Appearance and Wearables: beginner/appearance.md
       - Building: beginner/building.md
       - Content (Mesh Upload): beginner/content.md
       - Land Basics: beginner/land.md
@@ -35,6 +36,7 @@ nav:
   - Advanced Guide:
       - Quick Start and Modes: advanced/quick-start-and-modes.md
       - Movement and Navigation: advanced/movement-navigation.md
+      - Appearance and Wearables: advanced/appearance.md
       - Building and Environment: advanced/building-environment.md
       - Content (Mesh Upload): advanced/content.md
       - Land Management: advanced/land.md

@@ -81,4 +81,6 @@ Walk back to 128,128,25.
 - If teleport fails, verify the destination region exists and is online.
 - If an animation does not play, check that the name is a known built-in animation or provide a valid animation UUID.
 
+For avatar clothing and attachment prompts, see **Beginner Guide -> Appearance and Wearables**.
+
 For tool-level details, see **Advanced Guide -> Movement and Navigation**.
