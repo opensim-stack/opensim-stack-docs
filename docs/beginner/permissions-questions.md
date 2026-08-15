@@ -9,7 +9,7 @@ The bot may ask permission before doing sensitive actions (file edits, command e
 
 The dialog bridge is delivered via the bot attachment `The Cube Bot` (from inventory folder `Cube Bot IAR`) and can show multiple-choice prompts using `llDialog`.
 
-If needed, run `*bridge install` to wear `Full Body Alpha` and attach `The Cube Bot` to `Spine`.
+If needed, run `*bridge install` to wear `Full Body Alpha` and attach `The Cube Bot`.
 
 ## Essential star commands
 

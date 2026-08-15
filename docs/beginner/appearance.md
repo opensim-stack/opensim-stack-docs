@@ -63,6 +63,23 @@ Move attachment item 11111111-2222-3333-4444-555555555555 to Spine and replace w
 Detach item 11111111-2222-3333-4444-555555555555.
 ```
 
+## Cube bot emotions
+
+```text
+Show available cube moods.
+```
+
+```text
+Set your cube mood to happy.
+```
+
+```text
+Set your cube mood to surprised.
+```
+
+!!! tip "If mood change fails"
+    Ask the bot to list available cube moods first, then use one of those names exactly.
+
 ## Quick adjustment prompts
 
 ```text

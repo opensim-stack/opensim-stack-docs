@@ -21,6 +21,45 @@ This page documents tool-level outfit, wearable, and attachment control in `open
 - `AppearanceVisualParamSet`
 - `AppearanceBakeDiagnostics`
 
+## Cube bot mood tools
+
+- `MoodList`
+- `SetBotMood`
+
+These tools control the cube-bot emoter attachment by routing mood messages through the dialog bridge object.
+
+Prerequisites:
+
+- Dialog bridge communication must already be established so a trusted bridge object is pinned.
+- Mood names map to texture names in the bridge/cube attachment object inventory.
+
+List available mood names:
+
+```text
+MoodList(includeUtilityTextures=false)
+```
+
+List all texture names (including utility textures like `base` and `cross`):
+
+```text
+MoodList(includeUtilityTextures=true)
+```
+
+Set mood by name:
+
+```text
+SetBotMood(emotion="happy")
+```
+
+Another example:
+
+```text
+SetBotMood(emotion="surprised")
+```
+
+!!! tip "Recommended sequence"
+    Call `MoodList` first, pick one returned `moodNames` entry, then call `SetBotMood` with that exact name.
+
 ## Outfit folder workflows
 
 Wear folder in replace mode:
@@ -195,3 +234,4 @@ Diagnostics include server-baking mode, manager busy state, visual-param counts,
 - For scripted outfit pipelines, save known-good snapshots with `AppearanceSaveCurrentOutfit`.
 - Use `AppearanceListWorn` before and after changes when debugging layered wearable behavior.
 - For slider edits, call `AppearanceVisualParamsList` first, then `AppearanceVisualParamSet`, then `AppearanceBakeDiagnostics` to verify baked slot updates.
+- For cube expression changes, call `MoodList` before `SetBotMood` to avoid unknown texture names.
