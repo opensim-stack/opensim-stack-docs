@@ -13,6 +13,7 @@ This page documents tool-level outfit, wearable, and attachment control in `open
 - `AppearanceAttachItem`
 - `AppearanceSetAttachmentPointMapping`
 - `AppearanceListAttachmentPointMappings`
+- `AttachmentResolveObject`
 - `AppearanceDetachItem`
 - `AppearanceGetAttachedItemTransform`
 - `AppearanceSetAttachedItemTransform`
@@ -165,6 +166,30 @@ AppearanceSetAttachedItemTransform(
 
 !!! tip "Transform update behavior"
     Attachment transform updates are requested asynchronously through simulator object updates. Re-query state after a short delay to confirm final applied values.
+
+## Resolve attachment object IDs for task inventory
+
+When you need prim `task inventory` from a worn attachment (for example the bridge prim), first resolve the attachment item UUID to the currently active in-world object UUID/local ID.
+
+Resolve one worn attachment item:
+
+```text
+AttachmentResolveObject(itemId="11111111-2222-3333-4444-555555555555")
+```
+
+List task inventory using local ID:
+
+```text
+TaskInventoryList(objectLocalId=123456, objectId="11111111-2222-3333-4444-555555555555", maxResults=200)
+```
+
+List task inventory using object UUID only (tool resolves current local ID from simulator cache):
+
+```text
+TaskInventoryList(objectLocalId=0, objectId="11111111-2222-3333-4444-555555555555", maxResults=200)
+```
+
+`AppearanceListWorn` also includes attachment `objectId` and `objectLocalId` when currently available, so you can often skip a separate resolve step.
 
 ## Appearance refresh
 

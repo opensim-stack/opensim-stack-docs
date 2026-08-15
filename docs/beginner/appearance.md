@@ -63,6 +63,18 @@ Move attachment item 11111111-2222-3333-4444-555555555555 to Spine and replace w
 Detach item 11111111-2222-3333-4444-555555555555.
 ```
 
+```text
+Resolve attachment object for item 11111111-2222-3333-4444-555555555555.
+```
+
+```text
+Show task inventory for object id 11111111-2222-3333-4444-555555555555.
+```
+
+```text
+Show task inventory for object local id 123456.
+```
+
 ## Cube bot emotions
 
 ```text
