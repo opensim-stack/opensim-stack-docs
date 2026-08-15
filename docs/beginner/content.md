@@ -61,6 +61,20 @@ Rez inventory object item 9d4c7f0a-1111-2222-3333-444455556666 at 128,128,25 wit
 
 These map to `PrimReturnToOwner`, `PrimTake`, and `PrimRezFromInventory`.
 
+## Find items faster in inventory
+
+Use `InventoryList` filters when your inventory gets large:
+
+```text
+List inventory recursively and only show entries with name containing Sign.
+```
+
+```text
+List inventory in my Objects folder, type filter object, page size 50.
+```
+
+If results are paginated, reuse `NextCursor` from the response in your next `InventoryList` request and continue while `HasMore` is true.
+
 ## Common fixes
 
 - If strict inspection fails due to skipped primitives, convert/re-export the model with triangle faces.

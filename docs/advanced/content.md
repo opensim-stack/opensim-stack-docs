@@ -8,6 +8,7 @@ This page documents Collada-free mesh content workflows using modern `.glb` / `.
 - `MeshUploadGltf`
 - `AssetUploadInventory`
 - `AssetDownload`
+- `InventoryList`
 
 ## Inspection modes
 
@@ -95,6 +96,30 @@ Return local IDs 5102,5103 to owner inventory.
 ```
 
 Use `PrimTake` with `takeCopy=true` for non-destructive edits and `takeCopy=false` for move semantics.
+
+## Inventory browsing ergonomics
+
+`InventoryList` now supports name/type/date/creator filtering and cursor pagination.
+
+Prompt examples:
+
+```text
+List inventory recursively from root, filter to names containing Bridge and type object, and return 100 entries.
+```
+
+```text
+List inventory in folder 2e4d6f1c-1111-2222-3333-444455556666 created after 2026-01-01T00:00:00Z by creator 11111111-2222-3333-4444-555555555555.
+```
+
+```text
+Continue the previous inventory query using cursor b2Zmc2V0OjEwMA== with page size 100.
+```
+
+Pagination notes:
+
+- Pass `cursor` from `NextCursor` to fetch the next page.
+- Check `HasMore` to detect remaining entries.
+- `TotalMatched` reports total entries matching filters in the current query scope.
 
 !!! tip "Gate uploads with strict mode in production"
     For automated pipelines, run `MeshInspectGltf` strict mode before `MeshUploadGltf` to prevent partial or degraded uploads.
