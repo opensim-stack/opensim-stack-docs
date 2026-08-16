@@ -1,6 +1,57 @@
 # Advanced Social, Groups, and Session Control
 
-This page covers group-focused MCP workflows: membership visibility, group chat/session control, role/title management, and group notices.
+This page covers social MCP workflows: friends/friendship operations, teleport offers/requests, and group membership/session control.
+
+## Friends and teleport tools
+
+- `FriendList`
+- `FriendOffersList`
+- `FriendOfferSend`
+- `FriendOfferRespond`
+- `FriendRemove`
+- `FriendSetRights`
+- `FriendMapLocate`
+- `TeleportOfferSend`
+- `TeleportRequestSend`
+- `TeleportOffersList`
+- `TeleportRequestsList`
+- `TeleportOfferRespond`
+
+Operational notes:
+
+- `FriendList` includes online status; use `includeDetails=true` to inspect rights from both sides.
+- `FriendOfferRespond` uses pending incoming offers tracked by `FriendsManager` (`accept` or `decline`).
+- `FriendMapLocate` supports wait mode (`waitForReplySeconds > 0`) to return region-handle and local/global coordinates.
+- `TeleportOffersList` and `TeleportRequestsList` expose pending IM-based teleport signals seen during this bot session.
+- `TeleportOfferRespond` requires requester UUID plus IM session UUID from a pending offer row.
+
+## Directory and search tools
+
+- `DirectorySearchPeople`
+- `DirectorySearchGroups`
+- `DirectorySearchPlaces`
+- `DirectorySearchLand`
+
+Operational notes:
+
+- All directory tools return `summary`, `pagination`, and `results` payload blocks.
+- `pagination.hasMore=true` means you should call the same tool again with `pagination.nextQueryStart`.
+- `DirectorySearchPeople`, `DirectorySearchGroups`, and `DirectorySearchPlaces` usually use `queryStart` as page index (`0,1,2,...`).
+- `DirectorySearchLand` uses land-sale query offsets more often represented as `0,100,200,...`.
+- `DirectorySearchLand` supports `landType` values: `any`, `mainland`, `estate`, `auction` plus optional `maxPrice` and `minArea` filters.
+
+## Avatar profile tools
+
+- `AvatarProfileGet`
+- `AvatarPicksList`
+- `AvatarClassifiedsList`
+
+Operational notes:
+
+- `AvatarProfileGet` returns UDP profile/interests fields and can optionally include AgentProfile capability payloads when available.
+- `AvatarPicksList` returns pick IDs/names first; use `includeDetails=true` to request per-pick details such as sim name, description, and global position.
+- `AvatarClassifiedsList` returns classified IDs/names first; `includeDetails=true` enriches with parcel/sim data, pricing, and creation/expiration timestamps.
+- Detail lookups are best-effort; missing detail IDs are returned in `missingDetailPickIds` or `missingDetailClassifiedIds`.
 
 ## Group discovery and profile tools
 
@@ -136,6 +187,50 @@ If attachment fields are used, both IDs are required and must be UUIDs.
 4. For chat automation, verify active sessions with `GroupChatSessionsList` before sending.
 
 ## Prompt examples
+
+```text
+List my friends with detailed rights and online status.
+```
+
+```text
+Show pending friendship offers and accept one from 99999999-8888-7777-6666-555555555555.
+```
+
+```text
+Send a teleport offer to 99999999-8888-7777-6666-555555555555 with message "Join me at the sandbox stage".
+```
+
+```text
+Show pending teleport offers and decline the newest one.
+```
+
+```text
+Search people for "cube" starting at page 0.
+```
+
+```text
+Search groups for "builders" and continue with the returned nextQueryStart if hasMore is true.
+```
+
+```text
+Search places for "sandbox" from queryStart 0.
+```
+
+```text
+Search land listings of type mainland with maxPrice 5000 and minArea 512 starting at 0.
+```
+
+```text
+Get avatar profile and interests for 99999999-8888-7777-6666-555555555555 with capability details enabled.
+```
+
+```text
+List picks for 99999999-8888-7777-6666-555555555555 with details.
+```
+
+```text
+List classifieds for 99999999-8888-7777-6666-555555555555 with details.
+```
 
 ```text
 List my groups with details.
