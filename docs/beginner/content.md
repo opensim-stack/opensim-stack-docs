@@ -75,6 +75,30 @@ List inventory in my Objects folder, type filter object, page size 50.
 
 If results are paginated, reuse `NextCursor` from the response in your next `InventoryList` request and continue while `HasMore` is true.
 
+## Organize folders and items
+
+Useful prompts for day-to-day inventory cleanup:
+
+```text
+Create a folder named Building Kit under my inventory root.
+```
+
+```text
+Rename folder 2e4d6f1c-1111-2222-3333-444455556666 to Building Kit - Final.
+```
+
+```text
+Move item 9d4c7f0a-1111-2222-3333-444455556666 into folder 2e4d6f1c-1111-2222-3333-444455556666.
+```
+
+```text
+Copy item 9d4c7f0a-1111-2222-3333-444455556666 into folder 2e4d6f1c-1111-2222-3333-444455556666 with name Backup Copy.
+```
+
+```text
+Create a link to item 9d4c7f0a-1111-2222-3333-444455556666 in folder 2e4d6f1c-1111-2222-3333-444455556666 named Quick Link.
+```
+
 ## Common fixes
 
 - If strict inspection fails due to skipped primitives, convert/re-export the model with triangle faces.

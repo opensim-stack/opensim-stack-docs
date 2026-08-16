@@ -9,6 +9,11 @@ This page documents Collada-free mesh content workflows using modern `.glb` / `.
 - `AssetUploadInventory`
 - `AssetDownload`
 - `InventoryList`
+- `InventoryCreateFolder`
+- `InventoryMoveItem`
+- `InventoryMoveFolder`
+- `InventoryCopyItem`
+- `InventoryLinkItem`
 
 ## Inspection modes
 
@@ -120,6 +125,38 @@ Pagination notes:
 - Pass `cursor` from `NextCursor` to fetch the next page.
 - Check `HasMore` to detect remaining entries.
 - `TotalMatched` reports total entries matching filters in the current query scope.
+
+## Inventory CRUD and organization
+
+Use these tools to keep large inventories structured:
+
+- `InventoryCreateFolder`
+- `InventoryRenameFolder`, `InventoryRenameItem`
+- `InventoryMoveFolder`, `InventoryMoveItem`, `InventoryMoveMany`
+- `InventoryDeleteFolder`, `InventoryDeleteItem`, `InventoryDeleteMany`
+- `InventoryCopyItem`, `InventoryLinkItem`
+
+Prompt examples:
+
+```text
+Create folder "Project Props" under parent 2e4d6f1c-1111-2222-3333-444455556666.
+```
+
+```text
+Move item 9d4c7f0a-1111-2222-3333-444455556666 to folder 7a7b7c7d-1111-2222-3333-444455556666.
+```
+
+```text
+Copy item 9d4c7f0a-1111-2222-3333-444455556666 into folder 7a7b7c7d-1111-2222-3333-444455556666 with name Project Sign v2.
+```
+
+```text
+Create a link to item 9d4c7f0a-1111-2222-3333-444455556666 in folder 7a7b7c7d-1111-2222-3333-444455556666 named Sign Shortcut.
+```
+
+```text
+Move items 9d4c7f0a-1111-2222-3333-444455556666,0a1b2c3d-1111-2222-3333-444455556666 into folder 7a7b7c7d-1111-2222-3333-444455556666.
+```
 
 !!! tip "Gate uploads with strict mode in production"
     For automated pipelines, run `MeshInspectGltf` strict mode before `MeshUploadGltf` to prevent partial or degraded uploads.
