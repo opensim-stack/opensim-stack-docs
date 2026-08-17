@@ -26,6 +26,7 @@ nav:
   - Introduction: index.md
   - Beginner Guide:
       - Quick Start: beginner/quick-start.md
+      - Voice (Piper TTS): beginner/voice.md
       - Movement and Animation: beginner/movement-animation.md
       - Appearance and Wearables: beginner/appearance.md
       - Building: beginner/building.md
@@ -35,6 +36,7 @@ nav:
       - AI Permissions and Questions: beginner/permissions-questions.md
   - Advanced Guide:
       - Quick Start and Modes: advanced/quick-start-and-modes.md
+      - Voice (Piper TTS): advanced/voice.md
       - Movement and Navigation: advanced/movement-navigation.md
       - Appearance and Wearables: advanced/appearance.md
       - Building and Environment: advanced/building-environment.md

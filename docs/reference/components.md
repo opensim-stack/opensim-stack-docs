@@ -36,6 +36,12 @@ Primary files:
 - Uses the `blender-mcp` project to expose Blender operations to MCP-compatible agents.
 - Upstream project: <https://github.com/ahujasid/blender-mcp>
 
+## `opensim-piper`
+
+- Provides text-to-speech (TTS) over HTTP for voice-enabled bot workflows.
+- Typical in-stack endpoint: `http://opensim-piper:8995`.
+- Ships with preloaded US English voices and supports additional model drops via `/voices` volume.
+
 ## `opensim-opencode-init` and `opensim-opencode`
 
 - Init service writes stack `opencode.json` with MCP wiring.
@@ -61,5 +67,6 @@ Common persistent volumes include:
 - `opensim-metaverse2mcp`: <https://github.com/opensim-stack/opensim-metaverse2mcp>
 - `opensim-opencode`: <https://github.com/opensim-stack/opensim-opencode>
 - `opensim-blender`: <https://github.com/opensim-stack/opensim-blender>
+- `opensim-piper`: <https://github.com/opensim-stack/opensim-piper>
 - `blender-mcp`: <https://github.com/ahujasid/blender-mcp>
 - `libremetaverse`: <https://github.com/opensim-stack/libremetaverse>
