@@ -2,6 +2,40 @@
 
 This page covers social MCP workflows: friends/friendship operations, teleport offers/requests, and group membership/session control.
 
+## Chat authorization and routing model
+
+The bot enforces a trust gate before routing chat text to the AI backend.
+
+### Access policy by channel
+
+- `im-<sender-uuid>` (direct IM): allow only handler or C&C group members.
+- `local-chat` (spatial/local): allow only handler or C&C group members.
+- `group-<group-uuid>`:
+  - if `<group-uuid>` is the bot's own C&C group, accept all instructions in that session.
+  - otherwise, allow only handler or C&C group members.
+
+Unauthorized speakers receive a polite refusal reply and are not routed to AI execution.
+
+### Wake-word behavior
+
+- Direct IM does not require a wake word.
+- Multi-participant chats (group and local) require wake word prefixing:
+  - `@<botFirst> <botLast> ...`
+  - `@Bot ...` is additionally accepted in the bot's own C&C group chat.
+
+### Command authorization
+
+- Star commands (`*help`, `*status`, `*cancel`, `*configure`, etc.) are handler-only across all chat channels.
+- If handler identity is not configured, star commands are refused.
+
+### Session and concurrency notes
+
+- Conversation keys are channel-specific and stable:
+  - local: `local-chat`
+  - IM: `im-<sender-uuid>`
+  - group: `group-<group-uuid>`
+- Only one AI request can be active at a time per bot; overlapping requests from another session receive a busy response.
+
 ## Friends and teleport tools
 
 - `FriendList`

@@ -2,6 +2,13 @@
 
 This page helps you use group features in plain language with safe, incremental prompts.
 
+## Chat access rules (quick view)
+
+- The bot responds only to its configured handler, or to avatars who are in the bot's C&C group.
+- This rule applies to local chat, direct IM, and group chat.
+- In the bot's own C&C group chat, messages are accepted directly because participants are already trusted by group membership.
+- If someone outside those trusted identities sends instructions, the bot politely refuses.
+
 ## What you can do now
 
 - List the groups your bot is currently in.
