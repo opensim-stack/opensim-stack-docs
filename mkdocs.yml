@@ -33,6 +33,7 @@ nav:
       - Content (Mesh Upload): beginner/content.md
       - Land Basics: beginner/land.md
       - Social and Groups: beginner/social.md
+      - Bot Creation and Ownership: beginner/bot-creation.md
       - AI Permissions and Questions: beginner/permissions-questions.md
   - Advanced Guide:
       - Quick Start and Modes: advanced/quick-start-and-modes.md
@@ -43,6 +44,7 @@ nav:
       - Content (Mesh Upload): advanced/content.md
       - Land Management: advanced/land.md
       - Social, Groups, and Session Control: advanced/social.md
+      - Bot Creation and Spawner API: advanced/bot-creation.md
       - Server Maintenance and User Management: advanced/server-maintenance-user-management.md
       - AI Configuration: advanced/ai-configuration.md
       - Hardening: advanced/hardening.md

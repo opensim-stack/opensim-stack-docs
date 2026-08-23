@@ -40,12 +40,10 @@ At minimum, set:
 
 For sidecars, verify:
 
-- `MCP_PORT`
-- `METAVERSE_MCP_PORT`
-- `OPENCODE_PORT`
+- `CONSOLE_MCP_PORT`
+- `SPAWNER_PORT`
 - `OPENSIM_LOGIN_FIRSTNAME`
 - `OPENSIM_LOGIN_LASTNAME`
-- `OPENSIM_LOGIN_PASSWORD`
 
 ## Service topology checks
 

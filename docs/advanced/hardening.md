@@ -11,8 +11,7 @@ Update these in `.env` before opening ports to the internet:
 - `OPENSIM_CONSOLE_PASS`
 - `MARIADB_PASSWORD`
 - `MARIADB_ROOT_PASSWORD`
-- `OPENCODE_SERVER_PASSWORD`
-- `OPENCODE_PASSWORD` (if using Basic auth path)
+- `OPENCODE_SERVER_PASSWORD` (if using Basic auth path)
 
 ## API and transport hardening
 
@@ -25,8 +24,8 @@ Update these in `.env` before opening ports to the internet:
 
 Use handler restrictions:
 
-- `OPENCODE_HANDLER_FIRSTNAME`
-- `OPENCODE_HANDLER_LASTNAME`
+- `OPENSIM_BOT_HANDLER_FIRSTNAME`
+- `OPENSIM_BOT_HANDLER_LASTNAME`
 
 Use dialog bridge trust restrictions:
 

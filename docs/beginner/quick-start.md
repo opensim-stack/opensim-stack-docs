@@ -50,7 +50,7 @@ docker compose -f docker-compose.release.yml up -d
 
 Use these credentials unless you changed them in `.env`:
 
-- Username: `Admin User`
+- Username: `Bot Handler`
 - Password: `changeme`
 
 Grid/login URL normally uses your region endpoint, for example:
@@ -64,7 +64,7 @@ http://<OPENSIM_HOSTNAME>:<OPENSIM_REGION_PORT>
 
 ## 4) Start your first conversation with the bot
 
-After login, find `Bot User` and open an IM conversation.
+After login, find `Governor Bot` and open an IM conversation.
 
 Try this first command:
 
