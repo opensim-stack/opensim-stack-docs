@@ -14,7 +14,7 @@ This page shows how to spawn and manage bots with the MCP tools that call `opens
 
 Make sure `opensim-metaverse2mcp` can reach `opensim-spawner`:
 
-- `SPAWNER_HOST` (default: `opensim-spawner`)
+- `SPAWNER_HOST` (default: `opensim-ai-spawner`)
 - `SPAWNER_PORT` (default: `8993`)
 - `SPAWNER_TOKEN` (optional bearer token)
 

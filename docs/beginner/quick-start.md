@@ -4,6 +4,7 @@ This path is for first-time users who want a working local stack with minimal se
 
 ## Prerequisites
 
+- Operating system that supports Docker. Linux recommended, but Mac OS or Windows with WSL2 should work too
 - Docker Engine
 - Docker Compose v2 (`docker compose`)
 - An OpenSimulator viewer (Firestorm is commonly used)
@@ -12,51 +13,46 @@ This path is for first-time users who want a working local stack with minimal se
     Start with Docker's short guides before continuing:
     <https://docs.docker.com/get-started/docker-overview/>
 
-## 1) Prepare your environment file
+## 1) Get The Composition
 
-From the `opensim-ai-docker` repository:
+Create a working directory, e.g. `opensim-ai-stack`.
 
-```bash
-cp .env.example .env
+```
+mkdir opensim-ai-stack
+cd opensim-ai-stack
 ```
 
-Set at least `OPENSIM_HOSTNAME` in `.env`.
-
-Minimal values to review before first run:
-
-- `OPENSIM_HOSTNAME`
-- `OPENSIM_REGION_PORT`
-- `OPENSIM_ESTATE_OWNER_FIRST`
-- `OPENSIM_ESTATE_OWNER_LAST`
-- `OPENSIM_ESTATE_OWNER_PASSWORD`
-- `OPENSIM_CONSOLE_USER`
-- `OPENSIM_CONSOLE_PASS`
-
-## 2) Start the stack
-
-Source-mode compose (default):
+Get [docker-compose.yml](https://github.com/opensim-stack/opensim-ai-docker/blob/main/docker-compose.yml) from the root of the [stack composition repository](https://github.com/opensim-stack/opensim-ai-docker).
 
 ```bash
-docker compose up -d
+
+curl https://raw.githubusercontent.com/opensim-stack/opensim-ai-docker/refs/heads/main/docker-compose.yml -O docker-compose.yml
 ```
 
-Release-mode compose:
+## 2) Start The Stack
+
+You'll need to know the public or LAN hostname or IP address you are installing the stack on. E.g. run `hostname` command. We'll assume for the remainder of the example the result was `myhostname`. Replace with whatever your hostname actually is. 
 
 ```bash
-docker compose -f docker-compose.release.yml up -d
+OPENSIM_HOSTNAME=myhostname docker compose up -d
 ```
 
-## 3) Log in with your viewer
+## 3) Setup Your Grid
 
-Use these credentials unless you changed them in `.env`:
+Browse to .. 
 
-- Username: `Bot Handler`
-- Password: `changeme`
+```
+http://myhostname:8993
+```
 
-Grid/login URL normally uses your region endpoint, for example:
+Default username is `ConsoleUser` and password is `ConsolePass`. The *Setup Wizard* will now guide you through creating your grid, region, bot and user.
+
+## 4) Log in with your viewer
+
+Use the account username and password you just created in the setup wizard. Grid/login URL normally uses your region endpoint, for example:
 
 ```text
-http://<OPENSIM_HOSTNAME>:<OPENSIM_REGION_PORT>
+http://myhostname:9000
 ```
 
 !!! tip "Viewer grid manager"
@@ -64,7 +60,7 @@ http://<OPENSIM_HOSTNAME>:<OPENSIM_REGION_PORT>
 
 ## 4) Start your first conversation with the bot
 
-After login, find `Governor Bot` and open an IM conversation.
+After login, find the bot and open an IM conversation.
 
 Try this first command:
 
@@ -78,20 +74,30 @@ Then try simple movement:
 Walk to me.
 ```
 
-## 5) Optional: pick a stronger model
+## 5) Pick a stronger model
 
-Use star commands in IM:
+You will likely hit limits and limitations at some point with the free Opencode provider. To anything remotely complex you will need a stronger model.
+
+For example, sign up for [Opencode Zen](https://opencode.ai/zen) for anything up to current frontier models, or as you are just starting out, [Opencode Zen](https://opencode.ai/go) for a more budget friendly pricing plan.
+
+For lots more about AI providers and models, see **Advanced Guide -> AI Configuration**.
+
+### Opencode Zen
 
 ```text
-*auth methods github-copilot
-*auth github-copilot oauth 0
-*auth github-copilot oauth-complete 0
-*configure github-copilot/gpt-5.3-codex
+*auth opencode api 23k2345jksd80923509sdf0893245  # Replace with your actual API key
+*configure opencode/gpt-5.3-codex
 ```
 
-If your provider needs API keys instead, see **Advanced Guide -> AI Configuration**.
+### Opencode Go
 
-## 6) Stop and reset commands
+```text
+*auth opencode api 23k2345jksd80923509sdf0893245  # Replace with your actual API key
+*configure opencode/gpt-5.3-codex
+```
+
+
+## 6) Stop The Stack
 
 Stop services:
 
@@ -99,11 +105,3 @@ Stop services:
 docker compose down
 ```
 
-Full wipe including persistent volumes:
-
-```bash
-docker compose down -v
-```
-
-!!! warning "Data loss"
-    `down -v` removes region/database state for this stack invocation.

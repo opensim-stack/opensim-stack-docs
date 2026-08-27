@@ -6,32 +6,19 @@ Default settings are convenient for local testing, not public exposure.
 
 Update these in `.env` before opening ports to the internet:
 
-- `OPENSIM_ESTATE_OWNER_PASSWORD`
 - `OPENSIM_CONSOLE_USER`
 - `OPENSIM_CONSOLE_PASS`
 - `MARIADB_PASSWORD`
 - `MARIADB_ROOT_PASSWORD`
-- `OPENCODE_SERVER_PASSWORD` (if using Basic auth path)
+- `JANUS_API_TOKEN`
+- `JANUS_ADMIN_TOKEN`
+
+*Run `./generate-janus-tokens.sh` to update Janus credentials.*
 
 ## API and transport hardening
 
-- Set `METAVERSE_MCP_HTTP_BEARER_TOKEN` to protect metaverse MCP endpoint.
-- Use strong credentials for Opencode server auth paths.
 - Restrict host firewall exposure to only required ports.
 - Keep private services on Docker internal network when possible.
-
-## Bot control hardening
-
-Use handler restrictions:
-
-- `OPENSIM_BOT_HANDLER_FIRSTNAME`
-- `OPENSIM_BOT_HANDLER_LASTNAME`
-
-Use dialog bridge trust restrictions:
-
-- `OPENCODE_LSL_DIALOG_BRIDGE_TRUSTED_OWNER_ID`
-- `OPENCODE_LSL_DIALOG_BRIDGE_TRUSTED_OBJECT_ID`
-- `OPENCODE_LSL_DIALOG_BRIDGE_REQUIRE_TRUSTED_SENDER=true`
 
 ## Password change operations after deployment
 
@@ -41,12 +28,7 @@ Reset an account password through console command path:
 reset user password First Last NewStrongPassword
 ```
 
-Rotate console access credentials by updating `.env`, then restart affected services:
-
-```bash
-docker compose up -d
-
-docker compose restart opensim opensim-console2mcp
+Rotate console access credentials by updating `.env`, then restart affected services in web UI.
 ```
 
 ## Network and host hygiene

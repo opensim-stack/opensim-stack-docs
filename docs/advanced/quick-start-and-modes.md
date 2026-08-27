@@ -1,83 +1,66 @@
-# Advanced Quick Start and Modes
+# Advanced Quick Start
 
-This guide focuses on mode selection, image strategy, and operational commands.
+With further options for  getting up and running, this guide shows how you can automate initial setup with environment variables,
 
-## Build modes
+## Setup
 
-- **Source mode**: uses `docker-compose.yml` and `OPENSIM_SOURCE_IMAGE` by default.
-- **Release mode**: uses `docker-compose.release.yml` and `OPENSIM_RELEASE_IMAGE` by default.
-
-Both modes include the same sidecars (`opensim-console2mcp`, `opensim-metaverse2mcp`, `opensim-opencode`) and MariaDB.
-
-## Compose entry points
-
-Published images:
+Clone the [docker composition repository](https://github.com/opensim-stack/opensim-ai-docker) to your workspace.
+ 
+Run:
 
 ```bash
-docker compose up -d
-docker compose -f docker-compose.release.yml up -d
+cd opensim-ai-docker
+./run.sh myhostname
 ```
 
-Local build helper scripts:
+or setup manually ..
 
 ```bash
-./run.sh
-./run-release.sh
+cd opensim-ai-docker
+cp .env.example .env
+OPENSIM_HOSTNAME=myhostname docker compose up -d
 ```
 
-!!! tip "Local override files"
-    Helper scripts use `docker-compose.local.yml` or `docker-compose.release.local.yml` to build local images while keeping compose wiring consistent.
+Browse to (default username is `ConsoleUser` and password is `ConsolePass`). You will be guided through creating your grid, region, bot and user. 
 
-## Minimal environment baseline
-
-At minimum, set:
-
-- `OPENSIM_HOSTNAME`
-- `OPENSIM_REGION_PORT`
-- `OPENSIM_CONSOLE_USER`
-- `OPENSIM_CONSOLE_PASS`
-- `OPENSIM_ESTATE_OWNER_PASSWORD`
-
-For sidecars, verify:
-
-- `CONSOLE_MCP_PORT`
-- `SPAWNER_PORT`
-- `OPENSIM_LOGIN_FIRSTNAME`
-- `OPENSIM_LOGIN_LASTNAME`
-
-## Service topology checks
-
-Get status:
-
-```bash
-docker compose ps
+```
+http://myhostname:8993
 ```
 
-Tail logs for key services:
+### Alternative Setup Methods
 
-```bash
-docker compose logs -f opensim
+You can also skip the setup wizard and have setup automatically performed based on environment variabls (see `.env.example` near the top).
 
-docker compose logs -f opensim-console2mcp
+To start a standalone simulator ..
 
-docker compose logs -f opensim-metaverse2mcp
-
-docker compose logs -f opensim-opencode
+```
+OPENSIM_PROVISION_MODE=auto OPENSIM_HOSTNAME=myhostname docker compose up -d
 ```
 
-## Regenerate first-run config
+Or a ROBUST grid ..
 
-If REST console or bootstrap config drifted due to old volumes:
+```
+OPENSIM_PROVISION_MODE=grid OPENSIM_HOSTNAME=myhostname docker compose up -d
+```
+
+## Access Your 3D World
+
+Login with a [Viewer](https://www.firestormviewer.org/) to (default username is `Bot Handler` and password is `changeme`):
+
+```
+http://myhostname:9000
+```
+
+## When You Are Done
+
+Bring down:
 
 ```bash
+docker compose down
+```
+
+*Or if you want to completely wipe configuration and data ...*
+
+```
 docker compose down -v
-
-docker compose up -d
 ```
-
-## Port mapping defaults
-
-- OpenSim: `9000/tcp` and `9000/udp` (host side uses `OPENSIM_REGION_PORT`)
-- Console MCP: `8997/tcp`
-- Metaverse MCP: `8999/tcp`
-- Opencode HTTP: `8998/tcp`

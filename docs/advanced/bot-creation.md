@@ -6,7 +6,7 @@ This page documents the `opensim-metaverse2mcp` spawner-management MCP tools and
 
 `opensim-metaverse2mcp` now exposes a built-in HTTP spawner client configured by:
 
-- `SPAWNER_HOST` (default: `opensim-spawner`)
+- `SPAWNER_HOST` (default: `opensim-ai-spawner`)
 - `SPAWNER_PORT` (default: `8993`)
 - `SPAWNER_TOKEN` (optional bearer token)
 

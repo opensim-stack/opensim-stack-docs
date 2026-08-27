@@ -48,23 +48,17 @@ Useful metaverse/opencode variables:
 - `OPENCODE_INITIAL_PROVIDER`
 - `OPENCODE_INITIAL_MODEL`
 - `OPENCODE_REQUEST_TIMEOUT_SECONDS`
-- `OPENSIM_BOT_HANDLER_FIRSTNAME`
-- `OPENSIM_BOT_HANDLER_LASTNAME`
 - `PROMPT_HANDLING_ENABLED`
 - `PROMPT_PROJECT_AGENTS_ENABLED`
 - `PROMPT_PROJECT_AGENTS_FILE`
 
 ## MCP endpoint wiring
 
-Main generated values in `opencode.json` are sourced from:
-
-- `OPENCODE_MCP_URL` (console MCP)
-- `OPENCODE_METAVERSE_MCP_URL` (metaverse MCP)
-
 Default in-stack endpoints:
 
-- `http://opensim-console2mcp:8997/mcp`
-- `http://opensim-metaverse2mcp:8999/mcp`
+- `http://opensim-ai-console2mcp:8997/mcp`
+- `http://opensim-ai-blender:8997/mcp`
+- `http://opensim-ai-metaverse2mcp-BotFirst-BotLast:8999/mcp`
 
 ## Adding more MCP servers
 
@@ -77,12 +71,17 @@ Example pattern:
   "mcp": {
     "local_host_mcp": {
       "type": "remote",
-      "url": "http://opensim-console2mcp:8997/mcp",
+      "url": "http://opensim-ai-console2mcp:8997/mcp",
       "enabled": true
     },
     "metaverse_mcp": {
       "type": "remote",
-      "url": "http://opensim-metaverse2mcp:8999/mcp",
+      "url": "http://opensim-ai-metaverse2mcp-BotFirst-BotLast:8999/mcp",
+      "enabled": true
+    },
+    "blender_mcp": {
+      "type": "remote",
+      "url": "http://opensim-ai-blender:8997/mcp",
       "enabled": true
     },
     "extra_tools": {
