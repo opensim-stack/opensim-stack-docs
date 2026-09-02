@@ -6,8 +6,6 @@ Default settings are convenient for local testing, not public exposure.
 
 Update these in `.env` before opening ports to the internet:
 
-- `OPENSIM_CONSOLE_USER`
-- `OPENSIM_CONSOLE_PASS`
 - `MARIADB_PASSWORD`
 - `MARIADB_ROOT_PASSWORD`
 - `JANUS_API_TOKEN`
