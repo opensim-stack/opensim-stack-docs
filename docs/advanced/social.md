@@ -23,6 +23,27 @@ Unauthorized speakers receive a polite refusal reply and are not routed to AI ex
   - `@<botFirst> <botLast> ...`
   - `@Bot ...` is additionally accepted in the bot's own C&C group chat.
 
+### Chat modalities (send-side)
+
+- Local chat send tools support explicit modality selection:
+  - `Chat(message, channel, chatType?)` where `chatType` is optional and case-insensitive.
+  - `ChatWhisper(message, channel)` as a convenience wrapper.
+  - `ChatShout(message, channel)` as a convenience wrapper.
+- If `chatType` is omitted, the tool defaults to `Normal`.
+- Typical use is:
+  - `Whisper` for nearby/quiet interaction,
+  - `Normal` for standard local chat,
+  - `Shout` for wider local radius.
+
+### Chat modalities (receive-side filter)
+
+- Incoming local and group chat is filtered by modality before AI routing.
+- Configure allow-list with env var `LOCAL_CHAT_ALLOWED_TYPES`.
+- Format: comma/pipe/space-separated `ChatType` names (case-insensitive), for example: `Normal,Whisper`.
+- Default is `Normal`, which keeps existing behavior for most setups.
+- Group IM receive messages (`SessionSend`) are treated as `Normal` for this filter.
+- Messages with filtered-out modalities are ignored (with a diagnostic log line).
+
 ### Command authorization
 
 - Star commands (`*help`, `*status`, `*cancel`, `*configure`, etc.) are handler-only across all chat channels.
