@@ -10,16 +10,6 @@ This page shows how to spawn and manage bots with the MCP tools that call `opens
 - Check one bot status (including `parent` and `children`).
 - Delete a bot and its containers.
 
-## Required stack wiring
-
-Make sure `opensim-metaverse2mcp` can reach `opensim-spawner`:
-
-- `SPAWNER_HOST` (default: `opensim-ai-spawner`)
-- `SPAWNER_PORT` (default: `8993`)
-- `SPAWNER_TOKEN` (optional bearer token)
-
-The bot-management HTTP endpoints are fixed under `/api/bot` (for example, list uses `GET /api/bot`).
-
 ## MCP tools
 
 - `BotList`

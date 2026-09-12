@@ -2,7 +2,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TARGET_DIR="${SCRIPT_DIR}/../opensim-stack.github.io/docs"
+STACK_DIR="${SCRIPT_DIR}/../opensim-ai-docker"
+SITE_DIR="${SCRIPT_DIR}/../opensim-stack.github.io"
+TARGET_DIR="${SITE_DIR}/docs"
 
 cd "${SCRIPT_DIR}"
 
@@ -21,3 +23,4 @@ mkdir -p "${TARGET_DIR}"
 mkdocs build --clean -d "${TARGET_DIR}"
 
 echo "Docs built to ${TARGET_DIR}"
+cp "${STACK_DIR}/docker-compose.yml" "${SITE_DIR}/docker-compose.yml"
