@@ -14,15 +14,10 @@ This page focuses on tool-level building workflows and environment payload contr
 - `PrimApplyUvPreset`
 - `PrimTileUv`
 - `PrimTileUvNonUniform`
+- `PrimSetName`
+- `PrimSetDescription`
 - `PrimLink`
 - `PrimUnlink`
-- `PrimClone`
-- `PrimInspect`
-- `PrimFetchProperties`
-- `PrimSetBuildParams`
-- `PrimSetFlexible`
-- `PrimSetLight`
-- `PrimSetSculpt`
 - `PrimInspectLinkset`
 - `PrimSetLinksetRoot`
 - `PrimReorderLinkset`
@@ -30,6 +25,22 @@ This page focuses on tool-level building workflows and environment payload contr
 - `PrimSetNextOwnerPermissions`
 - `PrimSetSaleInfo`
 - `PrimSetGroupOwnership`
+- `PrimClone`
+- `PrimInspect`
+- `PrimFetchProperties`
+- `PrimSetBuildParams`
+- `PrimSetFlexible`
+- `PrimSetLight`
+- `PrimSetSculpt`
+- `PrimSelect`
+- `PrimDeselect`
+- `PrimTouch`
+- `PrimTouchByName`
+- `PrimDelete`
+- `PrimDeleteMany`
+- `PrimReturnToOwner`
+- `PrimTake`
+- `PrimRezFromInventory`
 - `PrimQueryObjects`
 - `PrimRequestPayPrice`
 - `PrimBuy`
@@ -54,6 +65,10 @@ Apply a texture from https://example.com/panel.png and tile it 4x4 on face 0.
 
 ```text
 Rotate Marker-A by 90 degrees around Z and set scale to 1,2,0.5.
+```
+
+```text
+Touch the nearest object named "Door" and wait 750ms for scripted response.
 ```
 
 ```text
