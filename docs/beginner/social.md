@@ -14,6 +14,7 @@ This page helps you use group features in plain language with safe, incremental 
 - List the groups your bot is currently in.
 - List friends and see who is online.
 - Send friendship offers and respond to incoming friendship requests.
+- View and change friend permission switches (online visibility, map locate, and object modify/take).
 - Send teleport offers or request a teleport invite.
 - Respond to incoming teleport offers.
 - Search people, groups, places, and land-for-sale listings.
@@ -27,6 +28,9 @@ This page helps you use group features in plain language with safe, incremental 
 - Invite avatars to a group.
 - View and manage group bans (if your role has permission).
 
+Friendship permissions note:
+- When the bot accepts a friendship request from a configured handler, it automatically enables all three rights for that handler friend.
+
 ## Starter prompts
 
 ```text
@@ -39,6 +43,14 @@ Show my friends and who is online.
 
 ```text
 Show pending friendship offers.
+```
+
+```text
+Show friend rights for avatar 99999999-8888-7777-6666-555555555555.
+```
+
+```text
+Set friend rights for avatar 99999999-8888-7777-6666-555555555555 so they can see me online, locate me on map, and modify my objects.
 ```
 
 ```text

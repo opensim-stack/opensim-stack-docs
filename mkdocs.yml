@@ -32,6 +32,7 @@ nav:
       - Appearance and Wearables: beginner/appearance.md
       - Building: beginner/building.md
       - Content (Mesh Upload): beginner/content.md
+      - Inventory: beginner/inventory.md
       - Land Basics: beginner/land.md
       - Social and Groups: beginner/social.md
       - Bot Creation and Ownership: beginner/bot-creation.md
@@ -44,6 +45,7 @@ nav:
       - Appearance and Wearables: advanced/appearance.md
       - Building and Environment: advanced/building-environment.md
       - Content (Mesh Upload): advanced/content.md
+      - Inventory: advanced/inventory.md
       - Land Management: advanced/land.md
       - Social, Groups, and Session Control: advanced/social.md
       - Bot Creation and Spawner API: advanced/bot-creation.md

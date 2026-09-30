@@ -104,27 +104,9 @@ Use `PrimTake` with `takeCopy=true` for non-destructive edits and `takeCopy=fals
 
 ## Inventory browsing ergonomics
 
-`InventoryList` now supports name/type/date/creator filtering and cursor pagination.
+Inventory search, paging, and cache management now live on the separate [Advanced Inventory](inventory.md) page.
 
-Prompt examples:
-
-```text
-List inventory recursively from root, filter to names containing Bridge and type object, and return 100 entries.
-```
-
-```text
-List inventory in folder 2e4d6f1c-1111-2222-3333-444455556666 created after 2026-01-01T00:00:00Z by creator 11111111-2222-3333-4444-555555555555.
-```
-
-```text
-Continue the previous inventory query using cursor b2Zmc2V0OjEwMA== with page size 100.
-```
-
-Pagination notes:
-
-- Pass `cursor` from `NextCursor` to fetch the next page.
-- Check `HasMore` to detect remaining entries.
-- `TotalMatched` reports total entries matching filters in the current query scope.
+That page documents the task handle flow, filtering, cursor pagination, and cleanup expectations for `InventoryListRetrieve` and `InventoryListClear`.
 
 ## Inventory CRUD and organization
 

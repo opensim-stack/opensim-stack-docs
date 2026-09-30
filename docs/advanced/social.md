@@ -65,6 +65,7 @@ Unauthorized speakers receive a polite refusal reply and are not routed to AI ex
 - `FriendOfferRespond`
 - `FriendRemove`
 - `FriendSetRights`
+- `FriendRightsGet`
 - `FriendMapLocate`
 - `TeleportOfferSend`
 - `TeleportRequestSend`
@@ -76,6 +77,9 @@ Operational notes:
 
 - `FriendList` includes online status; use `includeDetails=true` to inspect rights from both sides.
 - `FriendOfferRespond` uses pending incoming offers tracked by `FriendsManager` (`accept` or `decline`).
+- `FriendSetRights` maps directly to the three viewer toggles for a friend: see online, locate on map, and modify/take objects.
+- `FriendRightsGet` returns one-friend rights status with both directions: `theirRights` (what the bot grants) and `myRights` (what the friend grants).
+- Accepting a friendship offer from a configured handler automatically grants all three rights by default.
 - `FriendMapLocate` supports wait mode (`waitForReplySeconds > 0`) to return region-handle and local/global coordinates.
 - `TeleportOffersList` and `TeleportRequestsList` expose pending IM-based teleport signals seen during this bot session.
 - `TeleportOfferRespond` requires requester UUID plus IM session UUID from a pending offer row.
@@ -249,6 +253,14 @@ List my friends with detailed rights and online status.
 
 ```text
 Show pending friendship offers and accept one from 99999999-8888-7777-6666-555555555555.
+```
+
+```text
+Get friend rights for 99999999-8888-7777-6666-555555555555.
+```
+
+```text
+Set friend rights for 99999999-8888-7777-6666-555555555555 with canSeeOnline true, canSeeOnMap true, canModifyObjects true.
 ```
 
 ```text

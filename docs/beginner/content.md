@@ -63,17 +63,9 @@ These map to `PrimReturnToOwner`, `PrimTake`, and `PrimRezFromInventory`.
 
 ## Find items faster in inventory
 
-Use `InventoryList` filters when your inventory gets large:
+Inventory browsing guidance now lives on the separate [Beginner Inventory](inventory.md) page.
 
-```text
-List inventory recursively and only show entries with name containing Sign.
-```
-
-```text
-List inventory in my Objects folder, type filter object, page size 50.
-```
-
-If results are paginated, reuse `NextCursor` from the response in your next `InventoryList` request and continue while `HasMore` is true.
+That page shows the new `InventoryList` -> `InventoryListRetrieve` -> `InventoryListClear` workflow and simple examples for searching large inventories.
 
 ## Organize folders and items
 
