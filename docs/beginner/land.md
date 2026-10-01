@@ -7,7 +7,8 @@ This page helps you make safe land-related changes with plain-language prompts.
 - Read parcel details for where you are standing.
 - Update parcel name, description, music URL, and media URL.
 - Configure parcel landing point behavior.
-- View parcel allow and ban lists.
+- View and manage parcel allow and ban lists.
+- View and update parcel flags (for example fly/build/access controls).
 - Sample terrain heights and run terraform actions.
 - Send region or estate broadcast messages (if your account has rights).
 
@@ -31,6 +32,26 @@ Set this parcel landing type to landing point at 128,128,25.
 
 ```text
 Show the ban list for parcel local ID 42.
+```
+
+```text
+Add avatar aa2edc97-a74f-496e-8740-42121d493241 to the allow list for parcel 42.
+```
+
+```text
+Run ParcelAccessListSet with localId=42, listType="access", action="add", agentIdsCsv="aa2edc97-a74f-496e-8740-42121d493241".
+```
+
+```text
+Show parcel flags for parcel 42.
+```
+
+```text
+Enable UseAccessList and AllowFly, and disable UseBanList on parcel 42.
+```
+
+```text
+Run ParcelSetFlags with localId=42, enableFlagsCsv="UseAccessList,AllowFly", disableFlagsCsv="UseBanList".
 ```
 
 ## Terrain examples

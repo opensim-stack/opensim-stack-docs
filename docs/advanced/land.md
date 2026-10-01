@@ -9,6 +9,9 @@ This page covers tool-level workflows for parcel, terrain, and estate administra
 - `ParcelSetInfo`
 - `ParcelSetLanding`
 - `ParcelAccessListGet`
+- `ParcelAccessListSet`
+- `ParcelFlagsGet`
+- `ParcelSetFlags`
 - `ParcelEjectUser`
 - `ParcelJoin`
 - `ParcelSubdivide`
@@ -54,6 +57,38 @@ Update parcel 42 name to Main Landing, set media URL to https://example.com/scre
 
 ```text
 Set parcel 42 landing type to direct.
+```
+
+```text
+Replace the allow list on parcel 42 with avatars <uuid-a>,<uuid-b>.
+```
+
+```text
+ParcelAccessListSet(localId=42, listType="access", action="replace", agentIdsCsv="<uuid-a>,<uuid-b>")
+```
+
+```text
+Remove avatar <uuid-a> from the ban list on parcel 42.
+```
+
+```text
+ParcelAccessListSet(localId=42, listType="ban", action="remove", agentIdsCsv="<uuid-a>")
+```
+
+```text
+Get parcel flags for parcel 42 and show enabled states.
+```
+
+```text
+ParcelFlagsGet(localId=42, forceRefresh=false)
+```
+
+```text
+Enable UseAccessList,AllowFly and disable UseBanList,AllowDamage on parcel 42.
+```
+
+```text
+ParcelSetFlags(localId=42, enableFlagsCsv="UseAccessList,AllowFly", disableFlagsCsv="UseBanList,AllowDamage")
 ```
 
 ```text
@@ -138,7 +173,7 @@ Get parcel by local ID 42 again and confirm landing, media, and access-list stat
 - Terraform now uses a cache-safe reference-height fallback when terrain patch cache is incomplete.
 - Patch-level workflows are available: verify cache coverage, diff RAW sources, and apply bounded offsets.
 - For cache-cold sessions, prefer `TerrainPatchApplyOffsetRaw` with a known `.r32` source file/URL.
-- Access list support is read-focused in current MCP flows.
+- Access list updates are scope-specific (`access` or `ban`) and support `add`, `remove`, `replace`, and `clear` operations.
 - Estate operations depend on simulator capabilities and your estate permission level.
 
 !!! tip "Prefer capability-aware retries"
