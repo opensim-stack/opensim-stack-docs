@@ -6,6 +6,8 @@ This page documents tool-level outfit, wearable, and attachment control in `open
 
 - `AppearanceListWorn`
 - `AppearanceWearFolder`
+- `ListOutfits`
+- `AppearanceWearOutfit`
 - `AppearanceSaveCurrentOutfit`
 - `AppearanceWearWearableItem`
 - `AppearanceRemoveWearableItem`
@@ -82,6 +84,22 @@ AppearanceSaveCurrentOutfit(folderName="Evening Demo Look", parentFolderId="")
 ```
 
 `AppearanceWearFolder` returns category conflict context so you can see where add/replace semantics overlap.
+
+## Outfit discovery and wear by name
+
+List available outfit folders:
+
+```text
+ListOutfits()
+```
+
+Wear by outfit folder name:
+
+```text
+AppearanceWearOutfit(outfitName="Evening Demo Look")
+```
+
+`ListOutfits` enumerates immediate child folders under the My Outfits root. `AppearanceWearOutfit` resolves by case-insensitive folder name under that same root and updates only the COF outfit-folder link.
 
 ## Direct wearable controls
 

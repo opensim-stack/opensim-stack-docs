@@ -25,6 +25,16 @@ Add outfit folder 11111111-2222-3333-4444-555555555555 without replacing current
 !!! tip "Replace vs add"
     "Replace" swaps existing outfit categories. "Add" keeps current items and layers in additional ones where possible.
 
+## Choose and wear a saved outfit
+
+```text
+List my available outfits.
+```
+
+```text
+Set current outfit to Evening Demo Look.
+```
+
 ## Save your current look
 
 ```text
