@@ -9,6 +9,8 @@
 - `FlyTo`
 - `TeleportTo`
 - `TeleportToRegionHandle`
+- `RegionUuid`
+- `Map`
 - `StopMovement`
 - `StartMovement`
 - `LookAt`
@@ -69,6 +71,29 @@ Tracked attributes can transition between known and unknown and still emit updat
 - Use explicit region names plus coordinates when possible.
 - If region name collisions exist, use a region-handle or precise routing command.
 - Confirm location with status before issuing object-edit operations.
+
+## Map lookup and region-handle tooling
+
+Use `RegionUuid` when you only have global map coordinates and need the region handle for follow-up operations.
+
+```text
+RegionUuid(globalX=99712, globalY=102400)
+```
+
+Use `Map` to query map-layer entities directly from a region:
+
+```text
+Map(regionHandle="0", itemType="AgentLocations", layerType="Objects")
+Map(regionHandle="1099511628032", itemType="LandForSale", layerType="Objects")
+Map(regionHandle="1099511628032", itemType="PgEvent", layerType="Objects")
+```
+
+Behavior notes:
+
+- `regionHandle="0"` means "use current simulator region handle".
+- `itemType` defaults to `AgentLocations`.
+- `layerType` defaults to `Objects`.
+- JSON rows are type-aware and include subtype-specific fields (for example `avatarCount`, `price`, `description`, `flags`, `category`) in addition to shared map coordinates.
 
 ## Operational checks
 

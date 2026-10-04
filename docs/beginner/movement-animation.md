@@ -30,8 +30,25 @@ Teleport to region Welcome Island at 128,128,25.
 Teleport back to my current region.
 ```
 
+## Region and map lookup prompts
+
+```text
+Find the region handle at global map coordinates 99712, 102400.
+```
+
+```text
+Show agent location map markers for my current region.
+```
+
+```text
+Show land-for-sale map entries for region handle 1099511628032.
+```
+
 !!! tip "Use clear targets"
     Give region name plus coordinates when possible. It reduces ambiguity and failed teleports.
+
+!!! tip "When to use map lookup"
+    If you only have global map coordinates, resolve the region handle first, then query map data for that handle.
 
 ## Animation prompts
 
