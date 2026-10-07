@@ -26,6 +26,7 @@ This page helps you use group features in plain language with safe, incremental 
 - Send a group notice (with optional attachment IDs).
 - Set active group and active group title.
 - Invite avatars to a group.
+- Accept or decline incoming group invitations.
 - View and manage group bans (if your role has permission).
 
 Friendship permissions note:
@@ -115,6 +116,10 @@ Send a group notice to 11111111-2222-3333-4444-555555555555 with subject Weekly 
 
 ```text
 Invite avatar 99999999-8888-7777-6666-555555555555 to group 11111111-2222-3333-4444-555555555555 using the Everyone role.
+```
+
+```text
+When a groups.invite.received event arrives, accept it with GroupInviteRespond using that groupId and action accept.
 ```
 
 ```text

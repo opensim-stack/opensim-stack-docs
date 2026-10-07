@@ -173,6 +173,7 @@ Verification notes:
 ## Group invite and ban tools
 
 - `GroupInviteUser`
+- `GroupInviteRespond`
 - `GroupBanListGet`
 - `GroupBanSet`
 
@@ -197,6 +198,8 @@ Verification notes:
 
 Ban notes:
 
+- Incoming group invitations are emitted as runtime event `groups.invite.received` (channel `friends`) with `groupId` and `sessionId` attributes.
+- `GroupInviteRespond` accepts `action=accept|decline`; pass `sessionId` when you want strict invite/session matching.
 - `GroupBanSet` supports `verifyAfterSubmit` and `verifyWaitSeconds`.
 - Verification uses read-back from `GroupBanListGet`-equivalent state and returns classified outcomes.
 

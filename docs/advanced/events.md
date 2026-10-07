@@ -23,7 +23,7 @@ Polling action tools directly is expensive and race-prone. The event stream give
 
 ### Channels
 
-- `general`: login/disconnect/chat/inventory-offer and similar lifecycle events
+- `general`: login/disconnect/chat/inventory-offer/script-dialog and similar lifecycle events
 - `object`: object update stream (high-volume)
 - `teleport`: teleport success/failure stream
 
@@ -71,6 +71,20 @@ Common patterns:
 - only failures: `teleport.failed,network.disconnected`
 - chat-focused: `chat.im.received,chat.local.received`
 - lifecycle: `login.success,login.failed,login.connected,network.disconnected`
+- scripted dialogs: `script.dialog.received`
+
+## Script dialog workflow
+
+When a scripted object opens a dialog for the bot, runtime emits `script.dialog.received` on `general`.
+The event attributes include a `pendingDialogHandle` plus object/owner metadata and button labels.
+
+Typical handling loop:
+
+1. Poll `general` (or filtered `eventTypes="script.dialog.received"`).
+2. Read `pendingDialogHandle` from the event.
+3. Call `ListScriptDialogs(pendingDialogHandle="<handle>")` to inspect message/buttons.
+4. Reply with `ScriptDialogChoice(pendingDialogHandle="<handle>", buttonIndex=<n>)`.
+5. Use `buttonIndex=-1` to cancel/remove a pending dialog without clicking any button.
 
 ## Attribute filters
 

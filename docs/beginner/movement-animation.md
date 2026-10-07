@@ -75,6 +75,26 @@ What animations are you playing?
 !!! tip "Use built-in animation names"
     Names like `wave`, `dance`, `clap`, `bow`, `laugh`, and `sit` resolve to the viewer's built-in animations. You can also pass an animation UUID directly.
 
+## Sitting on chairs and objects
+
+```text
+Sit on prim 503191167.
+```
+
+```text
+Sit on the nearest chair.
+```
+
+```text
+Find the nearest explicit sit target within 15 meters and sit.
+```
+
+!!! note "Ground sit vs object sit"
+    `sit` by itself does a ground sit. For furniture/chairs, use object-targeted sit requests (by local ID, by name, or nearest sittable prim).
+
+!!! tip "If sit fails"
+    Move the bot closer to the chair and retry. Some objects require proximity before they return an `AvatarSitResponse`.
+
 ## Follow-and-demonstrate workflow
 
 1. Ask the bot to come near you.
@@ -100,4 +120,4 @@ Walk back to 128,128,25.
 
 For avatar clothing and attachment prompts, see **Beginner Guide -> Appearance and Wearables**.
 
-For tool-level details, see **Advanced Guide -> Movement and Navigation**.
+For tool-level details, see **Advanced Guide -> Movement and Animation**.

@@ -16,6 +16,8 @@ This page covers tool-level workflows for parcel, terrain, and estate administra
 - `ParcelJoin`
 - `ParcelSubdivide`
 - `ParcelPermissionDiagnostics`
+- `ParcelDeedToGroup`
+- `ParcelReclaim`
 
 ## Terrain tools
 
@@ -93,6 +95,22 @@ ParcelSetFlags(localId=42, enableFlagsCsv="UseAccessList,AllowFly", disableFlags
 
 ```text
 Run parcel permission diagnostics for parcel 42.
+```
+
+```text
+Deed the current parcel to group <group-uuid>.
+```
+
+```text
+ParcelDeedToGroup(groupId="<group-uuid>", forceRefresh=false)
+```
+
+```text
+Reclaim the parcel under the bot's current position.
+```
+
+```text
+ParcelReclaim()
 ```
 
 ```text
@@ -174,6 +192,8 @@ Get parcel by local ID 42 again and confirm landing, media, and access-list stat
 - Patch-level workflows are available: verify cache coverage, diff RAW sources, and apply bounded offsets.
 - For cache-cold sessions, prefer `TerrainPatchApplyOffsetRaw` with a known `.r32` source file/URL.
 - Access list updates are scope-specific (`access` or `ban`) and support `add`, `remove`, `replace`, and `clear` operations.
+- `ParcelDeedToGroup` only works when the bot currently owns the parcel under its position and has rights to deed to the target group.
+- `ParcelReclaim` uses the current simulator and parcel under the bot position; reclaim success depends on simulator/estate privileges.
 - Estate operations depend on simulator capabilities and your estate permission level.
 
 !!! tip "Prefer capability-aware retries"

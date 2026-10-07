@@ -13,7 +13,7 @@ The event tools are useful when you want to:
 
 Use channels to control noise level:
 
-- `general` - login/disconnect/chat/inventory and other normal updates
+- `general` - login/disconnect/chat/inventory/script-dialog and other normal updates
 - `object` - high-volume object update stream
 - `teleport` - teleport-specific success/failure events
 
@@ -39,7 +39,19 @@ Try prompts like these in your MCP client:
 - "Filter chat events so only messages from `Governor Bot` show up."
 - "Show event stream stats so I can see whether buffers are trimming."
 - "Show me event history for the last 120 seconds for teleport failures."
+- "Watch for `script.dialog.received` events and alert me when the bot needs to choose a button."
 - "Unsubscribe `main-events`."
+
+## Handling scripted object dialogs
+
+When a scripted in-world object asks the bot to click a button, you receive `script.dialog.received` on `general`.
+
+Use this sequence:
+
+1. Read `pendingDialogHandle` from the event attributes.
+2. Call `ListScriptDialogs` (optionally filtered by that handle) to inspect message/buttons.
+3. Call `ScriptDialogChoice` with a 0-based `buttonIndex` to choose a button.
+4. Use `buttonIndex=-1` to cancel that pending dialog without sending any response.
 
 ## Practical tips
 
