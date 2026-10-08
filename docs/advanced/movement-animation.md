@@ -30,6 +30,8 @@
 - `AnimationStop`
 - `AnimationsList`
 - `ActiveAnimations`
+- `ListScriptAnimationPermissionRequests`
+- `ScriptAnimationPermissionRespond`
 
 ## Sit semantics and chair workflows
 
@@ -62,6 +64,28 @@ AnimationsList()
 AnimationStart(animation="DANCE1")
 ActiveAnimations()
 AnimationStop(animation="DANCE1")
+```
+
+## Object animation permission prompts
+
+When scripted objects request permission to animate the bot (for example after a sit interaction), runtime emits:
+
+- channel: `general`
+- event type: `script.permission.animation.requested`
+- key attribute: `pendingPermissionHandle`
+
+Use this response pattern:
+
+1. Poll for `script.permission.animation.requested`.
+2. Inspect pending requests with `ListScriptAnimationPermissionRequests`.
+3. Approve or deny with `ScriptAnimationPermissionRespond`.
+
+Example calls:
+
+```text
+ListScriptAnimationPermissionRequests(pendingPermissionHandle="all")
+ScriptAnimationPermissionRespond(pendingPermissionHandle="<handle>", allow=true)
+ScriptAnimationPermissionRespond(pendingPermissionHandle="<handle>", allow=false)
 ```
 
 ## Reliable navigation pattern

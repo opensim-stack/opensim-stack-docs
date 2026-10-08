@@ -18,6 +18,15 @@ Update these in `.env` before opening ports to the internet:
 - Restrict host firewall exposure to only required ports.
 - Keep private services on Docker internal network when possible.
 
+For `opensim-metaverse2mcp` (LibreMetaverse 3.1.8+), set security options explicitly:
+
+- `OPENSIM_SECURITY_VERIFY_SERVER_CERTIFICATES=true` (recommended baseline).
+- `OPENSIM_SECURITY_CA_BUNDLE_PATH=/path/to/ca-bundle.pem` when your grid uses a private/internal CA.
+- `OPENSIM_SECURITY_TRUST_CERTIFICATE=<sha256-fingerprint>` only when intentionally pinning a known server certificate.
+- `OPENSIM_RESTRICT_TEXTURES_TO_MODEL_DIRECTORY=true` to keep Collada texture lookup constrained to model-local paths.
+
+If you previously relied on implicit trust for self-signed certs, upgrades can break login until you provide a CA bundle or explicitly relax verification.
+
 ## Password change operations after deployment
 
 Reset an account password through console command path:

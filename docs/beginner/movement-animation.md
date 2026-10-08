@@ -75,6 +75,30 @@ What animations are you playing?
 !!! tip "Use built-in animation names"
     Names like `wave`, `dance`, `clap`, `bow`, `laugh`, and `sit` resolve to the viewer's built-in animations. You can also pass an animation UUID directly.
 
+## Animation permission prompts (object requests)
+
+Some scripted chairs/objects ask permission before they can animate the bot avatar.
+When this happens, the runtime emits `script.permission.animation.requested` on channel `general`.
+
+Try prompts like:
+
+```text
+Show pending animation permission requests.
+```
+
+```text
+Approve the latest animation permission request.
+```
+
+```text
+Reject animation permission request handle <handle>.
+```
+
+Behind the scenes these map to:
+
+- `ListScriptAnimationPermissionRequests`
+- `ScriptAnimationPermissionRespond`
+
 ## Sitting on chairs and objects
 
 ```text
