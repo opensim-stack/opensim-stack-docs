@@ -14,10 +14,12 @@ The event tools are useful when you want to:
 Use channels to control noise level:
 
 - `general` - login/disconnect/chat/inventory/script-dialog and other normal updates
-- `object` - high-volume object update stream
+- `object` - high-volume object update stream (monitor-gated)
 - `teleport` - teleport-specific success/failure events
 
 If you are new to this, start with `general` only.
+
+For `object` events, add at least one object monitor first using `ObjectMonitorSimOrPrim`; otherwise object updates are not emitted.
 
 ## Typical beginner flow
 
@@ -34,8 +36,10 @@ Try prompts like these in your MCP client:
 - "Poll `main-events` with max 20 results and wait 5000 ms."
 - "Keep polling every few seconds and alert me only on disconnect or teleport failures."
 - "Create another subscription only for `teleport` events."
+- "Add an object monitor for all terse updates using `ObjectMonitorSimOrPrim(regionHandle=0, primId=0, terseUpdateEvent=true, fullUpdateEvent=false)`."
 - "Create an object subscription within 30m radius around the bot."
-- "Create an object watcher for object UUID `<uuid>` only."
+- "List current object monitors with `ListObjectMonitors`."
+- "Close all object monitors with `CloseObjectMonitor` and empty handle."
 - "Filter chat events so only messages from `Governor Bot` show up."
 - "Show event stream stats so I can see whether buffers are trimming."
 - "Show me event history for the last 120 seconds for teleport failures."
@@ -62,7 +66,7 @@ Use this sequence:
     Always continue from the last `nextCursor` so you do not re-read the same events.
 
 !!! warning "High-volume channels"
-    `object` events can be very busy. Keep them in a separate subscription from your everyday `general` automation.
+    `object` events can be very busy. Keep them in a separate subscription from your everyday `general` automation, and scope volume with `ObjectMonitorSimOrPrim` filters.
 
 !!! warning "Trim counters mean you fell behind"
     If trim counters grow, old events were dropped from bounded buffers. Reduce poll interval, reduce channels, or reduce workload per poll.

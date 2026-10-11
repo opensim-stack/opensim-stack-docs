@@ -18,13 +18,16 @@ Polling action tools directly is expensive and race-prone. The event stream give
 - `EventStreamHistory(lastSeconds, channels, eventTypes, radiusMeters, objectIds, objectLocalIds, chatSources, maxResults)`
 - `EventStreamUnsubscribe(subscriptionId)`
 - `EventStreamStats()`
+- `ObjectMonitorSimOrPrim(regionHandle, primId, children, terseUpdateEvent, fullUpdateEvent)`
+- `ListObjectMonitors()`
+- `CloseObjectMonitor(monitorHandle)`
 
 ## Runtime model
 
 ### Channels
 
 - `general`: login/disconnect/chat/inventory-offer/script-dialog and similar lifecycle events
-- `object`: object update stream (high-volume)
+- `object`: object update stream (high-volume, monitor-gated)
 - `teleport`: teleport success/failure stream
 
 `all` is accepted when creating or overriding channels.
@@ -43,6 +46,23 @@ Recommended baseline:
 
 - `maxResults`: `50` to `200`
 - `waitMs`: `3000` to `10000`
+
+### Object monitor gating
+
+Object channel updates are disabled by default. Subscribing to `object` alone does not emit object updates until at least one monitor is active.
+
+Use monitor tools to control object event emission:
+
+- `ObjectMonitorSimOrPrim`: add one monitor spec and get a monitor handle
+- `ListObjectMonitors`: inspect active monitor specs
+- `CloseObjectMonitor`: remove one monitor by handle, or remove all with empty/null handle
+
+Monitor matching fields:
+
+- `regionHandle`: `0` means all regions
+- `primId`: `0` means all prims
+- `children`: when true, child prim updates of `primId` also match
+- `terseUpdateEvent`/`fullUpdateEvent`: choose terse/full object update types
 
 ### Backpressure and trimming
 
@@ -115,6 +135,7 @@ Use `EventStreamHistory` for short retained replay during debugging:
 
 - Subscription A: `object`
 - Subscription B: `teleport`
+- Add monitor specs first (for example one per target region/object) before polling object events.
 - Keep object and teleport split to avoid starvation.
 
 ### 3) Conversation supervisor
@@ -129,9 +150,14 @@ Use `EventStreamHistory` for short retained replay during debugging:
 1) EventStreamSubscribe(channels="general", eventTypes="network.disconnected,teleport.failed", chatSources="Governor Bot")
 2) EventStreamPoll(subscriptionId="<id>", maxResults=100, waitMs=5000)
 3) EventStreamPoll(subscriptionId="<id>", cursor="<nextCursor>", maxResults=100, waitMs=5000)
-4) EventStreamHistory(lastSeconds=120, channels="teleport", eventTypes="teleport.failed", maxResults=50)
-5) EventStreamStats()
-6) EventStreamUnsubscribe(subscriptionId="<id>")
+4) ObjectMonitorSimOrPrim(regionHandle=0, primId=0, children=false, terseUpdateEvent=true, fullUpdateEvent=false)
+5) EventStreamSubscribe(channels="object", maxResults=100)
+6) EventStreamPoll(subscriptionId="<objectSubId>", maxResults=100, waitMs=5000)
+7) EventStreamHistory(lastSeconds=120, channels="teleport", eventTypes="teleport.failed", maxResults=50)
+8) ListObjectMonitors()
+9) CloseObjectMonitor(monitorHandle="")
+10) EventStreamStats()
+11) EventStreamUnsubscribe(subscriptionId="<id>")
 ```
 
 ## Operational notes
