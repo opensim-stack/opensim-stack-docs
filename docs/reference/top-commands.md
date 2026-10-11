@@ -76,6 +76,16 @@ Upload /workspace/models/sign.glb as Town Sign with description Main plaza sign.
 Inspect /workspace/models/bridge.glb in strict mode, then upload as Bridge-A if inspection passes.
 ```
 
+## Landmark workflows (MCP)
+
+```text
+LandmarkList(maxResults=200)
+LandmarkCreate(name="Sandbox Spawn", useCurrentPosition=true)
+LandmarkCreate(name="Parcel Door", useCurrentPosition=false, x=128, y=90, z=24)
+TeleportToLandmark(landmarkIdOrName="Sandbox Spawn")
+TeleportToLandmark(landmarkIdOrName="<landmark-item-or-asset-uuid>")
+```
+
 ## Docker operational commands
 
 ```bash

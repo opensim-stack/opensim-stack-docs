@@ -27,6 +27,7 @@ Primary files:
 
 - Logs bot avatar into the grid.
 - Exposes movement/building/inventory/environment tools over MCP HTTP.
+- Includes landmark workflows (`LandmarkList`, `LandmarkCreate`, `TeleportToLandmark`) for travel bookmarks.
 - Handles IM-driven star commands for sessions, provider auth, and runtime configuration.
 
 ## `opensim-blender`
