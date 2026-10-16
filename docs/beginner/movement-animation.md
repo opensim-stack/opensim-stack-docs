@@ -99,6 +99,31 @@ Behind the scenes these map to:
 - `ListScriptAnimationPermissionRequests`
 - `ScriptAnimationPermissionRespond`
 
+## Scripted menus and text input prompts
+
+Some scripted objects open popup menus or text boxes.
+When this happens, check pending dialogs and respond with either button choice or text.
+
+Try prompts like:
+
+```text
+Show pending scripted dialogs.
+```
+
+```text
+Press button 1 on dialog handle <handle>.
+```
+
+```text
+Submit text "hello" on dialog handle <handle>.
+```
+
+Behind the scenes these map to:
+
+- `ListScriptDialogs`
+- `ScriptDialogChoice`
+- `ScriptDialogTextInput`
+
 ## Sitting on chairs and objects
 
 ```text

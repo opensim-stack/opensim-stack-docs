@@ -71,6 +71,26 @@ Once you have found an item or folder, you can use tools such as:
 - `InventoryLinkItem`
 - `InventoryDeleteItem`
 
+## Touch another avatar's attachment
+
+If you need to click a scripted item worn by another avatar:
+
+1. Ask for known attachments with `AvatarAppearanceListWorn`.
+2. Touch one attachment with `AvatarAttachmentTouch`.
+
+Prompts you can use:
+
+```text
+List known worn attachments for avatar 11111111-2222-3333-4444-555555555555.
+```
+
+```text
+Touch attachment object aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee on avatar 11111111-2222-3333-4444-555555555555.
+```
+
+!!! tip "Best target"
+	Use attachment `objectId` when possible. It is more precise than attachment-point matching.
+
 ## Tips
 
 - If you do not see the item you expect, try listing recursively from the folder above it.

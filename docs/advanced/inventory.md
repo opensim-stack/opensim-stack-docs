@@ -110,3 +110,28 @@ For inventory organization and item lifecycle work, see:
 - `InventoryDeleteFolder`
 - `InventoryDeleteItem`
 - `InventoryDeleteMany`
+
+## Cross-avatar attachment interaction
+
+When you need to interact with scripted attachments worn by another avatar, use the cache-first flow:
+
+- `AvatarAppearanceListWorn` - lists known attachment object UUIDs (and local IDs when available) for a target avatar UUID.
+- `AvatarAttachmentTouch` - resolves a target attachment and sends a touch in one call.
+
+Recommended sequence:
+
+1. Call `AvatarAppearanceListWorn(avatarId=...)`.
+2. Pick an `objectId` from the returned attachment list.
+3. Call `AvatarAttachmentTouch(avatarId=..., objectId=..., settleMs=...)`.
+
+Example pattern:
+
+```text
+List known attachments for avatar 11111111-2222-3333-4444-555555555555.
+Touch attachment object aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee on that avatar.
+```
+
+Operational notes:
+
+- This depends on simulator cache visibility; if the avatar or attachment is unknown in cache, refresh context (move closer / same region) and retry.
+- Prefer `objectId` targeting when multiple attachments share the same attachment point.

@@ -30,6 +30,9 @@
 - `AnimationStop`
 - `AnimationsList`
 - `ActiveAnimations`
+- `ListScriptDialogs`
+- `ScriptDialogChoice`
+- `ScriptDialogTextInput`
 - `ListScriptAnimationPermissionRequests`
 - `ScriptAnimationPermissionRespond`
 
@@ -86,6 +89,25 @@ Example calls:
 ListScriptAnimationPermissionRequests(pendingPermissionHandle="all")
 ScriptAnimationPermissionRespond(pendingPermissionHandle="<handle>", allow=true)
 ScriptAnimationPermissionRespond(pendingPermissionHandle="<handle>", allow=false)
+```
+
+## Scripted dialog menus and text boxes
+
+Scripted objects can open either button menus (e.g. `llDialog`) or text entry prompts (e.g. `llTextBox`).
+Both are exposed through the same pending dialog handle surfaced by runtime event `script.dialog.received`.
+
+Recommended response flow:
+
+1. Poll/inspect pending dialogs with `ListScriptDialogs`.
+2. Use `ScriptDialogChoice` when responding by button index.
+3. Use `ScriptDialogTextInput` when the dialog expects free-form text.
+
+Example calls:
+
+```text
+ListScriptDialogs(pendingDialogHandle="all")
+ScriptDialogChoice(pendingDialogHandle="<dialog-handle>", buttonIndex=0)
+ScriptDialogTextInput(pendingDialogHandle="<dialog-handle>", text="status")
 ```
 
 ## Reliable navigation pattern
