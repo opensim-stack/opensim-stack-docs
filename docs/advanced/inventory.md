@@ -116,18 +116,21 @@ For inventory organization and item lifecycle work, see:
 When you need to interact with scripted attachments worn by another avatar, use the cache-first flow:
 
 - `AvatarAppearanceListWorn` - lists known attachment object UUIDs (and local IDs when available) for a target avatar UUID.
+- `AvatarCacheList` - diagnostic dump of all `ObjectAvatars` cache entries across known simulators, including attachment snapshots.
 - `AvatarAttachmentTouch` - resolves a target attachment and sends a touch in one call.
 
 Recommended sequence:
 
 1. Call `AvatarAppearanceListWorn(avatarId=...)`.
-2. Pick an `objectId` from the returned attachment list.
-3. Call `AvatarAttachmentTouch(avatarId=..., objectId=..., settleMs=...)`.
+2. If attachments are unexpectedly empty, call `AvatarCacheList()` to verify the avatar is currently present in cache.
+3. Pick an `objectId` from the returned attachment list.
+4. Call `AvatarAttachmentTouch(avatarId=..., objectId=..., settleMs=...)`.
 
 Example pattern:
 
 ```text
 List known attachments for avatar 11111111-2222-3333-4444-555555555555.
+List all cached avatars to confirm cache visibility while troubleshooting.
 Touch attachment object aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee on that avatar.
 ```
 

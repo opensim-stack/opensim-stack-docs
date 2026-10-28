@@ -84,6 +84,18 @@ Operational notes:
 - `TeleportOffersList` and `TeleportRequestsList` expose pending IM-based teleport signals seen during this bot session.
 - `TeleportOfferRespond` requires requester UUID plus IM session UUID from a pending offer row.
 
+## Local partner profile tool
+
+- `SetPartner`
+
+Operational notes:
+
+- `SetPartner(userFirst, userLast, partnerFirst, partnerLast)` sets a partnership for both local users in one call.
+- `SetPartner(userFirst, userLast)` clears only that user's `profilePartner` value.
+- Full divorce is therefore two calls (one call per user).
+- Both users must exist in the local grid user database; this tool does not target remote/HG users.
+- Partner updates are stored in the OpenSim profile table (`userprofile.profilePartner`).
+
 ## Directory and search tools
 
 - `DirectorySearchPeople`
@@ -264,6 +276,14 @@ Get friend rights for 99999999-8888-7777-6666-555555555555.
 
 ```text
 Set friend rights for 99999999-8888-7777-6666-555555555555 with canSeeOnline true, canSeeOnMap true, canModifyObjects true.
+```
+
+```text
+Set partner for local user Alice Example to Bob Example.
+```
+
+```text
+Clear partner for local user Alice Example.
 ```
 
 ```text

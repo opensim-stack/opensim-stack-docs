@@ -15,6 +15,7 @@ This page helps you use group features in plain language with safe, incremental 
 - List friends and see who is online.
 - Send friendship offers and respond to incoming friendship requests.
 - View and change friend permission switches (online visibility, map locate, and object modify/take).
+- Set or clear local avatar partnerships (partner/divorce) for users that exist on this local grid.
 - Send teleport offers or request a teleport invite.
 - Respond to incoming teleport offers.
 - Search people, groups, places, and land-for-sale listings.
@@ -31,6 +32,10 @@ This page helps you use group features in plain language with safe, incremental 
 
 Friendship permissions note:
 - When the bot accepts a friendship request from a configured handler, it automatically enables all three rights for that handler friend.
+
+Partnership note:
+- Setting a partner updates both users in one call when both local users exist.
+- Clearing a partner only updates the target user, so a full divorce needs two calls (one per user).
 
 ## Starter prompts
 
@@ -56,6 +61,14 @@ Set friend rights for avatar 99999999-8888-7777-6666-555555555555 so they can se
 
 ```text
 Send a friendship request to avatar 99999999-8888-7777-6666-555555555555.
+```
+
+```text
+Set partner for local user Alice Example to Bob Example.
+```
+
+```text
+Clear partner for local user Alice Example.
 ```
 
 ```text

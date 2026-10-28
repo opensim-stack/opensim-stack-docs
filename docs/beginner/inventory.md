@@ -76,12 +76,17 @@ Once you have found an item or folder, you can use tools such as:
 If you need to click a scripted item worn by another avatar:
 
 1. Ask for known attachments with `AvatarAppearanceListWorn`.
-2. Touch one attachment with `AvatarAttachmentTouch`.
+2. If nothing appears, run `AvatarCacheList` to check whether that avatar is visible in cache.
+3. Touch one attachment with `AvatarAttachmentTouch`.
 
 Prompts you can use:
 
 ```text
 List known worn attachments for avatar 11111111-2222-3333-4444-555555555555.
+```
+
+```text
+Show every avatar currently in simulator cache.
 ```
 
 ```text
