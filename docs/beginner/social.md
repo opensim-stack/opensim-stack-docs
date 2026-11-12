@@ -16,6 +16,8 @@ This page helps you use group features in plain language with safe, incremental 
 - Send friendship offers and respond to incoming friendship requests.
 - View and change friend permission switches (online visibility, map locate, and object modify/take).
 - Set or clear local avatar partnerships (partner/divorce) for users that exist on this local grid.
+- Request a display-name change for the logged-in bot avatar.
+- Update the logged-in bot avatar profile AboutText (or clear it).
 - Send teleport offers or request a teleport invite.
 - Respond to incoming teleport offers.
 - Search people, groups, places, and land-for-sale listings.
@@ -69,6 +71,18 @@ Set partner for local user Alice Example to Bob Example.
 
 ```text
 Clear partner for local user Alice Example.
+```
+
+```text
+Set my display name to Builder Cube Bot and use old display name Alice Example if needed.
+```
+
+```text
+Set my avatar profile about text to: Builder bot for sandbox demos and scripted tours.
+```
+
+```text
+Clear my avatar profile about text.
 ```
 
 ```text

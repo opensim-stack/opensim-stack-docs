@@ -87,6 +87,8 @@ Operational notes:
 ## Local partner profile tool
 
 - `SetPartner`
+- `SetDisplayName`
+- `AvatarProfileSetAboutText`
 
 Operational notes:
 
@@ -95,6 +97,10 @@ Operational notes:
 - Full divorce is therefore two calls (one call per user).
 - Both users must exist in the local grid user database; this tool does not target remote/HG users.
 - Partner updates are stored in the OpenSim profile table (`userprofile.profilePartner`).
+- `SetDisplayName(newDisplayName, oldDisplayName?)` targets the logged-in bot avatar and submits a `SetDisplayName` capability request.
+- Some grids validate the previous name strictly; provide `oldDisplayName` explicitly when server-side validation rejects a defaulted value.
+- `AvatarProfileSetAboutText(aboutText, waitForReplySeconds?)` targets the logged-in bot avatar, reads current profile properties, then submits an update with the new `AboutText` while preserving other profile fields.
+- Use an empty string for `aboutText` to clear the profile About section.
 
 ## Directory and search tools
 
@@ -284,6 +290,14 @@ Set partner for local user Alice Example to Bob Example.
 
 ```text
 Clear partner for local user Alice Example.
+```
+
+```text
+Set my avatar profile about text to: Builder bot for region maintenance and tours.
+```
+
+```text
+Clear my avatar profile about text.
 ```
 
 ```text

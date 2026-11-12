@@ -60,6 +60,7 @@ Retrieve inventory results created after 2026-01-01T00:00:00Z by creator 1111111
 - `pageSize` controls how many entries you see per page
 - `nameContains` is a case-insensitive substring match
 - `type` matches folder kind, asset type, or inventory type
+- item rows include `assetId` (folders return `null`) for direct `AssetDownload` chaining
 - `createdAfterUtc` and `createdBeforeUtc` only apply to items
 - `creatorId` only applies to items
 - `cursor` resumes from a prior page

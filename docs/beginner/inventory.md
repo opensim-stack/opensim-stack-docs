@@ -39,6 +39,8 @@ Use inventory listing when you want to:
 4. If there are more results, use the returned cursor to continue.
 5. Call `InventoryListClear` when you are finished.
 
+When you need to download item contents (for example a notecard), use the `assetId` field from an item row returned by `InventoryListRetrieve`, then call `AssetDownload(assetId, ...)`.
+
 ## Examples
 
 Find items containing a word in the name:
