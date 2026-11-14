@@ -27,7 +27,7 @@ The OpenSim AI Stack is a Docker Compose deployment that combines:
 6. Environment controls for region and parcel lighting/weather profiles.
 7. Runtime AI provider and model switching using star commands.
 8. Prompt layering with project and in-world `AGENTS.md` support.
-9. Optional in-world dialog bridge for AI questions and approvals.
+9. Signals discovery for bot-to-object capability handshakes (`signals_nearby` and `signals_description`).
 10. Two runtime modes (source/release) with shared operational model.
 
 ## Choose your path
@@ -56,7 +56,7 @@ Bridges OpenSimulator REST console endpoints into MCP tools so AI can issue admi
 
 ### `opensim-metaverse2mcp`
 
-Logs in the bot avatar and exposes movement, building, inventory, environment, and chat-linked AI control over MCP HTTP.
+Logs in the bot avatar and exposes movement, building, inventory, environment, and chat-linked AI control over MCP HTTP. It also includes Signals object discovery and schema lookup for bot-to-object workflows.
 
 ### `opensim-opencode`
 
@@ -65,6 +65,7 @@ Runs Opencode server mode and uses generated `opencode.json` to connect to both 
 ## Next steps
 
 - Architecture details: **Reference -> Architecture Diagram**
+- Signals overview and tool usage: **Reference -> Signals API**
 - First run: **Beginner Guide -> Quick Start**
 - Avatar outfit and wearable control: **Beginner Guide -> Appearance and Wearables**
 - Tool-level outfit/attachment operations: **Advanced Guide -> Appearance and Wearables**

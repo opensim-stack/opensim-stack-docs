@@ -55,6 +55,7 @@ nav:
   - Reference:
       - Architecture Diagram: reference/architecture.md
       - Components: reference/components.md
+      - Signals API: reference/signals.md
       - Curated Top Commands: reference/top-commands.md
       - Glossary: reference/glossary.md
 
